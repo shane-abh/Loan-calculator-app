@@ -1,0 +1,81 @@
+#result {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #e2f1ff;
+    margin: 30px auto;
+    width: 80%;
+  }
+  
+
+  
+ 
+
+  
+
+  
+  table,
+  td,
+  th {
+    border: 1px solid;
+  }
+  
+  th {
+    padding: 5px;
+    background-color: #ccc;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #last-row {
+    background-color: rgb(190, 204, 218);
+    font-weight: bold;
+  }
+  
+  td {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 25px;
+    font-size: 17px;
+    font-weight: 520;
+  }
+  
+  td:nth-of-type(1) {
+    font-weight: 600;
+    background-color: rgb(208, 225, 241);
+  }
+  
+  #pie {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+
+  
+  #chart,
+  #amortization-schedule {
+    background-color: #f2f9ff;
+    /* border: 1px solid blue; */
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 5px;
+  }
+
+  footer {
+    width: 100%;
+    background-color: aliceblue;
+    color: #000;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
