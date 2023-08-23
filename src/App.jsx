@@ -15,10 +15,10 @@ function App() {
   return (
     <div>
       <Header />
-      <Trial/>
-{/*      
+      {/* <Trial/> */}
+     
       <LoanForm loanInfo={setFormData}/>
-      {formData!=null? <Results data={formData}/> : ""} */}
+      {formData!=null? <Results data={formData}/> : ""}
       
     </div>
   );
