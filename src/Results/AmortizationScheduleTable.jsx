@@ -14,7 +14,7 @@ const AmortizationScheduleTable = ({ data }) => {
 
   return (
     <div id="amortization-schedule">
-      <h3>Amortization Schedule</h3>
+      <h2>Amortization Schedule</h2>
 
       <table>
         <thead>

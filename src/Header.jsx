@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./css/Header.css";
 import logo from './assets/react.svg' 
 
-const Header = () => {
-  const [mode, setMode] = useState(true);
+import {ThemeContext} from './App'
 
-  const handleClick = () => {
-    setMode(!mode);
-  };
+const Header = ({set}) => {
+  
+  
+  const {mode, toggleMode} = useContext(ThemeContext)
+ 
+
+
+
+  console.log(mode)
+ 
   return (
     
       <header className={`Header ${mode? 'light' : 'dark'}`}>
@@ -16,7 +22,7 @@ const Header = () => {
           <a href="#">Home</a>
           <a href="#">Loan Calculator</a>
           <a href="#">About Us</a>
-        <button onClick={handleClick}>Click Me</button>
+        <button onClick={toggleMode}>Click Me</button>
         </nav>
       </header>
     

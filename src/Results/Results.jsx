@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../css/Results.css";
+import "../css/background.css"
 import AmortizationScheduleChart from "./AmortizationScheduleChart";
 import LoanPaymentBarChart from "./LoanPaymentBarChart";
 import PaymentBreakdownPieChart from "./PaymentBreakdownPieChart";
 import AmortizationScheduleTable from "./AmortizationScheduleTable";
+import { ThemeContext } from "../App";
 
 const Results = (data) => {
+
+  const {mode} = useContext(ThemeContext)
+
   const amortizationData = [];
 
   const labels = [];
@@ -67,33 +72,31 @@ const Results = (data) => {
     });
   }
 
-  
+  console.log(mode)
 
   return (
     <div>
-      <div id="result">
+      <div id="result" className={` ${mode? 'light' : 'dark'}`}>
         <h2>Results</h2>
         <p>Monthly Payment: {monthlyPayment.toFixed(2) || 0}</p>
         <p>Total Payment: {totalPayments}</p>
         <p>Down Payment: {downPaymentAmount}</p>
         <p>
-          Total Payment after down payment:
-          {loanAmount - downPaymentAmount}
+          Total Payment after down payment: {(loanAmount - downPaymentAmount).toFixed(2)}
         </p>
         <p>
-          Total interest after down payment:
-         {totalInterestAmount}
+          Total interest after down payment: {totalInterestAmount.toFixed(2)}
         </p>
 
         <AmortizationScheduleChart data={dataForGraph} labels={labels} />
 
         <LoanPaymentBarChart data={dataForGraph} labels={labels} />
 
-        {/* <PaymentBreakdownPieChart
+        <PaymentBreakdownPieChart
           loanAmount={loanAmount}
           interestRate={interestRate}
           downPaymentAmount={downPaymentAmount}
-        /> */}
+        />
 
         <AmortizationScheduleTable data={amortizationData}/>
       </div>

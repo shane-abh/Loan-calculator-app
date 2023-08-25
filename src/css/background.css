@@ -1,0 +1,30 @@
+.light {
+    background-color: aliceblue;
+
+    color: black;
+}
+
+
+
+.dark {
+    background-color: #202B33;
+    color: white;
+}
+
+.light td:nth-of-type(1) {
+    font-weight: 600;
+    background-color: rgb(208, 225, 241);
+}
+
+.dark td:nth-of-type(1) {
+    font-weight: 600;
+    background-color: rgb(41, 41, 41);
+}
+
+.dark th{
+    background-color: black;
+}
+
+.dark #chart{
+    background-color: #2A2D3E;
+}

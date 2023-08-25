@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,18 +8,19 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
+} from "chart.js";
 
-import { Line } from 'react-chartjs-2';
+import { Line } from "react-chartjs-2";
+import { ThemeContext } from "../App";
 
-
-const AmortizationScheduleChart = ({data, labels}) => {
+const AmortizationScheduleChart = ({ data, labels }) => {
   //Function to add data and display line chart
-  
-  const remainingAmount = data.map(item => item.remainingAmount);
-  const monthlyPayment = data.map(item => item.principal);
-  const interestPayment = data.map(item => item.interest);
 
+  const { mode } = useContext(ThemeContext);
+
+  const remainingAmount = data.map((item) => item.remainingAmount);
+  const monthlyPayment = data.map((item) => item.principal);
+  const interestPayment = data.map((item) => item.interest);
 
   ChartJS.register(
     CategoryScale,
@@ -31,10 +32,8 @@ const AmortizationScheduleChart = ({data, labels}) => {
     Legend
   );
 
-  
-  const graphColor = "blue";
-
- 
+  const graphColor = mode ? "blue" : "#D8326D";
+  let legendColor = mode ? "black" : "white";
 
   //adding data
 
@@ -50,46 +49,64 @@ const AmortizationScheduleChart = ({data, labels}) => {
       {
         label: "Remaining Amount",
         data: remainingAmount,
-        borderColor: "green",
+        borderColor: mode ? "green" : "#2BAB51",
         fill: false,
-        borderDash: [5, 5],
+        // borderDash: [5, 5],
       },
       {
         label: "Interest Amount",
         data: interestPayment,
-        borderColor: "violet",
+        borderColor: mode ? "violet" : "#D98B44",
         fill: false,
-        borderDash: [5, 5],
+        // borderDash: [5, 5],
       },
     ],
-  }
+  };
 
   const options = {
     responsive: true,
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: "Months",
-          },
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: "Payment Amount ($)",
-          },
+    plugins: {
+      legend: {
+        labels: {
+          color: legendColor,
         },
       },
-  }
-  
-  return (
-    <div id="chart">
-          <h3>Amortization Schedule Graph</h3>
-          <Line options={options} data={chartData} />
-        </div>
-  )
-}
+    },
+    scales: {
+      x: {
+        display: true,
 
-export default AmortizationScheduleChart
+        title: {
+          display: true,
+          text: "Months",
+          color: legendColor,
+          font: {
+            size: 20,
+          },
+        },
+        ticks: { color: legendColor },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Payment Amount ($)",
+          color: legendColor,
+          font: {
+            size: 20,
+          },
+        },
+        ticks: { color: legendColor },
+      },
+    },
+  };
+
+  return (
+    <div id="chart" className={` ${mode ? "light" : "dark"}`}>
+      <h2>Amortization Schedule Graph</h2>
+      <Line options={options} data={chartData} />
+    </div>
+  );
+};
+
+export default AmortizationScheduleChart;

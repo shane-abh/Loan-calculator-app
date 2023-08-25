@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useContext } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { ThemeContext } from "../App";
 
 const LoanPaymentBarChart = ({data, labels}) => {
 
@@ -22,9 +23,14 @@ const LoanPaymentBarChart = ({data, labels}) => {
     Legend
   );
 
+  const { mode } = useContext(ThemeContext);
+
 
   const monthlyPayment = data.map(item => item.principal);
   const interestPayment = data.map(item => item.interest);
+
+
+  let legendColor = mode ? "black" : "white";
 
   const chartData =  {
     labels: labels,
@@ -44,26 +50,44 @@ const LoanPaymentBarChart = ({data, labels}) => {
 
   const options = {
     responsive: true,
-      scales: {
-        x: {
-          display: true,
-          title: {
-            display: true,
-            text: "Months",
-          },
-        },
-        y: {
-          display: true,
-          title: {
-            display: true,
-            text: "Payment Amount ($)",
-          },
+    plugins: {
+      legend: {
+        labels: {
+          color: legendColor,
         },
       },
+    },
+    scales: {
+      x: {
+        display: true,
+
+        title: {
+          display: true,
+          text: "Months",
+          color: legendColor,
+          font: {
+            size: 20,
+          },
+        },
+        ticks: { color: legendColor },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Payment Amount ($)",
+          color: legendColor,
+          font: {
+            size: 20,
+          },
+        },
+        ticks: { color: legendColor },
+      },
+    },
   }
   return (
     <div id="chart">
-      <h3>Loan Payment Bar Chart</h3>
+      <h2>Loan Payment Bar Chart</h2>
       <Bar options={options} data={chartData} />
     </div>
   );

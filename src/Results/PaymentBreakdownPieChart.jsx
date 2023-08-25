@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { ThemeContext } from "../App";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -10,8 +11,12 @@ const PaymentBreakdownPieChart = ({
   downPaymentAmount,
 }) => {
 
+  const {mode} = useContext(ThemeContext)
+
   
   const totalInterest = Math.abs(loanAmount * (interestRate / 100));
+
+  let legendColor = mode ? "black" : "white";
 
   const data = {
     labels: ["Principal Amount", "Total Interest", "Down Payment"],
@@ -27,13 +32,27 @@ const PaymentBreakdownPieChart = ({
     ],
   };
 
+
   const options = {
     responsive: true,
+   plugins:{
+    legend: {
+      labels: {
+        color: legendColor,
+        font:{
+          size: 15,
+        }
+      }
+    }
+   }
   };
   return (
     <div id="chart">
-      <h3>Payment Breakdown Pie Chart</h3>
-      <Doughnut data={data} options={options} />
+      <h2>Payment Breakdown Pie Chart</h2>
+      <div style={{maxWidth:'600px', margin:'10px auto'}}>
+
+      <Doughnut data={data} options={options}/>
+      </div>
     </div>
   );
 };

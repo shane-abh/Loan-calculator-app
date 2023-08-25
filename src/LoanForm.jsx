@@ -1,6 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import "./css/LoanForm.css";
+import "./css/background.css"
 import Results from "./Results/Results";
+
+import { ThemeContext } from "./App";
+
 
 const LoanForm = ({loanInfo}) => {
  
@@ -12,6 +16,8 @@ const LoanForm = ({loanInfo}) => {
     loanDate: "",
   });
 
+  const {mode, toggleMode} = useContext(ThemeContext)
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -20,13 +26,13 @@ const LoanForm = ({loanInfo}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data)
+    
     loanInfo(data)
     
   };
   return (
     <div className="container">
-      <form id="loan-form" onSubmit={handleSubmit}>
+      <form id="loan-form" onSubmit={handleSubmit} className={` ${mode? 'light' : 'dark'}`}>
         <div>
           <label htmlFor="loan-amount">Loan Amount ($):</label>
           <input

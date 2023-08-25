@@ -1,5 +1,5 @@
 .container form {
-    background-color: #e2f1ff;
+    /* background-color: #e2f1ff; */
     padding: 30px;
     border-radius: 10px;
     display: flex;
@@ -84,4 +84,8 @@
   
   .container button:hover {
     background-color: #0056b3;
+  }
+
+  .hidden{
+    display: none;
   }
