@@ -2,29 +2,39 @@ body{
     margin: 0;
 }
 
-
-.light{
-    background-color: aliceblue;
-    
-    
-}
-.light a{
-    color: black;
+header{
+    position: sticky; top: 0;
 }
 
-
-.dark{
-    background-color: black;
-}
-.dark a {
-    color: white;
-}
 
 .Header{
     margin: 0;
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+   
+    /* display: grid;
     
-    grid-template-areas: "logo nav";
+    grid-template-areas: "logo nav"; */
+}
+
+.Header label{
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.Header img{
+    width: 5%;
+    padding: 5px;
+}
+
+button{
+    display: inline;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
 }
 
 .Nav{
@@ -49,14 +59,18 @@ nav a{
 }
 
 @media (max-width: 700px) {
-    .Header{
-        grid-template-areas: "logo logo" "nav nav";
-    }
-
-    .Nav{
-        grid-template-rows: repeat(4, auto);
-        grid-template-columns: none;
-        gap: 20px ;
+    .Header label{
+        font-size: 20px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
     
+    .Header img{
+        width: 10%;
+        padding: 5px;
+    }
+    
+    button{
+        display: block;
+        border: 2px solid pink;
+    }
 }

@@ -60,7 +60,7 @@
   }
   
   .container button {
-    /* grid-column: span 2; */
+    width: 50%;
     padding: 10px;
     font-size: 18px;
     background-color: #007bff;
@@ -72,16 +72,21 @@
   }
   
   #buttons {
-    /* display: flex; */
+    display: flex;
     flex-direction: row;
-    gap: 100px;
+    /* gap: 100px; */
     margin-top: 30px;
+ justify-content: center;
+    width: 100%;
   }
   
   #clearContents {
     background-color: #868ebb;
+    /* width: 50%; */
   }
   
+
+
   .container button:hover {
     background-color: #0056b3;
   }

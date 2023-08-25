@@ -98,7 +98,7 @@ const LoanForm = ({loanInfo}) => {
 
         <div id="buttons">
           <button id="clearContents">Clear</button>
-          <button type="submit">Calculate</button>
+          <button type="submit" id="calculate">Calculate</button>
         </div>
       </form>
     </div>
