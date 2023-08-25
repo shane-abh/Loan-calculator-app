@@ -15,9 +15,7 @@ header{
     justify-content: center;
     align-items: center;
    
-    /* display: grid;
     
-    grid-template-areas: "logo nav"; */
 }
 
 .Header label{
